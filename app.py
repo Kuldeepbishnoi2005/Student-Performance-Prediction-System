@@ -12,12 +12,12 @@ app = Flask(__name__)
 def prepare_data():
     if not os.path.exists("dataset.csv"):
         data = {
-            "Study_Hours": [2, 3, 4, 5, 6, 8, 10, 12, 15, 20],
-            "Attendance": [75, 80, 85, 90, 95, 98, 99, 100, 98, 95],
-            "Previous_Score": [65, 70, 75, 80, 85, 90, 92, 95, 98, 99],
-            "Assignment_Score": [70, 75, 80, 85, 90, 95, 97, 99, 98, 96],
-            "Internal_Marks": [65, 70, 75, 80, 85, 90, 92, 95, 98, 99],
-            "Final_Performance": [68, 72, 78, 83, 88, 93, 95, 97, 99, 100]
+            "Study_Hours": [5,4,2,9,12,15,8,20,15,22,18],
+            "Attendance": [90,46,75,86,100,95,98,95,98,88,99],
+            "Previous_Score": [85,76,65,88,95,85,90,92,98,99,89],
+            "Assignment_Score": [14,19,18,15,19,18,19,20,18,16,20],
+            "Internal_Marks": [35,32,15,37,38,39,40,40,39,19,40],
+            "Final_Performance": [61.5,54.5,42.3,63.3,67.4,62.5,66.4,65.7,68.8,58.4,64.7]
         }
         pd.DataFrame(data).to_csv("dataset.csv", index=False)
 
