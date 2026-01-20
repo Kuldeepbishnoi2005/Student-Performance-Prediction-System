@@ -22,7 +22,7 @@
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 5 20px;
+            padding: 8 20px;
         }
         
         .btn {
@@ -93,7 +93,7 @@
             height: 400px;
             width: 100%;
         }
-        
+
         .shadow-text {
         font-size: 2rem;
         font-weight: 800;
@@ -108,7 +108,7 @@
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-10">
     <!-- Navigation -->
         <nav class="bg-white shadow-md sticky top-0 z-10">
             <div class="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -122,6 +122,7 @@
                 <button id="menuBtn" class="md:hidden text-3xl font-bold z-50 relative">
                     ☰
                 </button>
+
 
                 <!-- Menu -->
                 <div id="menu"
@@ -137,6 +138,7 @@
                 </div>
             </div>
         </nav>
+
 
     <!-- Home Page -->
     <section id="home" class="page active bg-gradient-to-br from-blue-50 to-indigo-50 py-22.5">
@@ -393,7 +395,6 @@ fetch("/get_data")
 // ---------------- MAIN JS ----------------
 document.addEventListener("DOMContentLoaded", () => {
 
-    //mobile phone menu
     const menuBtn = document.getElementById("menuBtn");
     const menu = document.getElementById("menu");
 
@@ -402,6 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
             menu.classList.toggle("hidden");
         });
     }
+
 
     // Navigation
     document.querySelectorAll(".nav-link").forEach(link => {
@@ -438,9 +440,12 @@ document.addEventListener("DOMContentLoaded", () => {
             studyHours: +studyHours.value,
             attendance: +attendance.value,
             prevScore: +prevScore.value,
-            assignmentScore: +assignmentScore.value,
-            internalMarks: +internalMarks.value
+
+            // Convert to out of 100
+            assignmentScore: (+assignmentScore.value / 20) * 100,
+            internalMarks: (+internalMarks.value / 40) * 100
         };
+
 
         fetch("/predict", {
             method: "POST",
@@ -481,17 +486,18 @@ function loadCharts() {
                 "Study Hours",
                 "Attendance",
                 "Previous Score",
-                "Assignment Score",
-                "Internal Marks"
+                "Assignment (20)",
+                "Internal (40)"
             ],
+
             datasets: [{
                 label: "Current Student Input",
                 data: [
                     lastInput.studyHours,
                     lastInput.attendance,
                     lastInput.prevScore,
-                    lastInput.assignmentScore,
-                    lastInput.internalMarks
+                    assignmentScore.value,
+                    internalMarks.value
                 ]
             }]
         },
@@ -549,7 +555,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
     }
 
     // WhatsApp number (India +91)
-    const whatsappNumber = "918602787054";
+    const whatsappNumber = "918607978501";
 
     const whatsappMessage =
         `New Contact Form Message:%0A%0A` +
@@ -565,6 +571,8 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
 
     // Reset form after sending
     this.reset();
+
+    
 });
 </script>
 
