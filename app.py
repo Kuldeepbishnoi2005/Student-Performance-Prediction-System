@@ -17,7 +17,7 @@ def prepare_data():
             "Previous_Score": [85,76,65,88,95,85,90,92,98,99,89],
             "Assignment_Score": [14,19,18,15,19,18,19,20,18,16,20],
             "Internal_Marks": [35,32,15,37,38,39,40,40,39,19,40],
-            "Final_Performance": [61.5,54.5,42.3,63.3,67.4,62.5,66.4,65.7,68.8,58.4,64.7]
+            "Final_Performance": [88.6,80,55.4,91.9,97.3,92.9,97.7,97.2,99.3,74.2,96.1]
         }
         pd.DataFrame(data).to_csv("dataset.csv", index=False)
 
